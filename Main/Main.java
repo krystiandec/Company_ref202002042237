@@ -182,7 +182,7 @@ public class Main {
  *[DONE] 6. Obsługa płci - wywala wyjątek przy wartości null - obsłużyć jakoś.
  * 7. Obsługa zakresu pensji zasadniczej. przy podaniu wartości innej niż w formacie 4521.02 wywala błąc - obsłużyć.
  * 8. Obsługa premii dla kierownika, ta sama sytuacja co dla pensji zasadniczej tutaj zacieśnić zakres do dodatnich int w zakresie 1-100.
- * 9. Poprawić obsługę pobierania nazwy pracownika, wyciągnąć na zewnątrz metodę sprawdzającą czy podany znak nie jest null. warunek w innej metodzie, w else i ponownym podaniu sprawdzić czy nie null przez wcześniejszą metodę.
+ *[DONE] 9. Poprawić obsługę pobierania nazwy pracownika, wyciągnąć na zewnątrz metodę sprawdzającą czy podany znak nie jest null. warunek w innej metodzie, w else i ponownym podaniu sprawdzić czy nie null przez wcześniejszą metodę.
  * */
 
 /*Problemy:

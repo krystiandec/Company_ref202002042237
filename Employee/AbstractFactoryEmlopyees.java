@@ -4,8 +4,6 @@ import Company.Loggers.ConsoleLogger;
 import Company.Loggers.FileLogger;
 import Company.Loggers.MultiLogger;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -50,7 +48,7 @@ public abstract class AbstractFactoryEmlopyees extends Employee {
         System.out.print("Podaj wiek: ");
         age = new Age(scan.nextLine());
         System.out.print("Podaj zarobki: ");
-        pensja = new BigDecimal(scan.nextLine()); // w ten sposób można obejść dawanie przecinka.podczas wpusywania pracownika z palca. można dawać kropkę.
+        pensja = incorrectInputValueHandler(scan.nextLine()); // w ten sposób można obejść dawanie przecinka.podczas wpusywania pracownika z palca. można dawać kropkę.
 
 /*        if (category == 'k') {
             System.out.print("Jaka premia do wypłaty:");
@@ -64,7 +62,7 @@ public abstract class AbstractFactoryEmlopyees extends Employee {
         switch (category) {
             case 'k': {
                 System.out.print("Jaka premia do wypłaty:");
-                BigDecimal premia = new BigDecimal(scan.nextLine());
+                BigDecimal premia = incorrectInputValueHandler(scan.nextLine());
                 return new Sepervisior(imie, nazwisko, sex, age, pensja, premia);
             }
             default: {
@@ -110,6 +108,24 @@ public abstract class AbstractFactoryEmlopyees extends Employee {
             }
         } while (!swicher);
         return returningCategory;
+    }
+
+    private static BigDecimal incorrectInputValueHandler(String string){
+        BigDecimal evaluateVal = null;
+        Scanner scan = new Scanner(System.in);
+        boolean swicher = false;
+        do {
+            try {
+                evaluateVal = new BigDecimal(string);
+                swicher = true;
+            } catch (Exception e) {
+                multiLogger.error("Niepoprawny fotmat !! Podano: " + string);
+                multiLogger.error("Podaj ponownie poprawną wartość. Separatorem jest \".\":");
+                string = scan.nextLine();
+            }
+        } while (!swicher);
+
+        return evaluateVal;
     }
 
 }
