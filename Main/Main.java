@@ -93,7 +93,7 @@ public class Main {
                 case DISPLAY_EMPLOYEE_LIST: {
                     consoleLogger.info("-------------------------------------");
                     logger.info("Lista pracowników: ");
-                    if (company_1.employeeList!=null) {
+                    if (company_1.employeeList != null) {
                         company_1.displayDataOfEmployee();
                     } else {
                         logger.error("Lista jest pusta. Dodaj kogoś albo wczytaj z pliku.");
@@ -139,7 +139,7 @@ public class Main {
                 break;
                 case COLLECT_INFORMATION_ABOUT_PROGRAMRS_DEPENDING_OF_TECHNOLOGY: {
                     consoleLogger.info("-------------------------------------");
-logger.info("Lista Programistów w zależności od technologii w jakiej pracują.");
+                    logger.info("Lista Programistów w zależności od technologii w jakiej pracują.");
                     Map<String, List<Programer>> programersTechnologyMap = company_1.programersTechnologyMap();
                     for (String technology : programersTechnologyMap.keySet()) {
                         consoleLogger.info("Technologia: " + technology + "(ilość osób: " + programersTechnologyMap.get(technology).size() + ")");
@@ -155,8 +155,8 @@ logger.info("Lista Programistów w zależności od technologii w jakiej pracują
                     companyRepository.save(company_1); // leci wyjątek bo nie wie jak zapisać ten objekt do pliku.
                 }
                 break;
-                case SORTING:{
-                company_1.ListSort();
+                case SORTING: {
+                    company_1.ListSort();
                 }
                 break;
                 case EXIT: {
@@ -186,4 +186,4 @@ logger.info("Lista Programistów w zależności od technologii w jakiej pracują
  * */
 
 /*Problemy:
-* 1. Czasem kiedy zatrzymam probram to pojawia się błąd przy próbie odczytu z pliku *.bin. */
+ * 1. Czasem kiedy zatrzymam probram to pojawia się błąd przy próbie odczytu z pliku *.bin. */

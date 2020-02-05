@@ -78,53 +78,39 @@ public abstract class AbstractFactoryEmlopyees extends Employee {
 
     private static char typeOfEmployeeEvaluate(String category) {
         Scanner scan = new Scanner(System.in);
-        char returningCategory;
-        try {
-            returningCategory = Character.toLowerCase(category.charAt(0));
-        } catch (Exception e) {
-            int i = 0;
-            returningCategory = (char) i;
-        }
+        char returningCategory = emptyStringHandler(category);
         boolean outOfLoop = false;
+
         do {
             int tempInt = returningCategory;
-            if (tempInt == 107) {
-                outOfLoop = true;
-            } else if (tempInt == 112) {
+            if (tempInt == 107 || tempInt == 112) {
                 outOfLoop = true;
             } else {
-                System.out.println("Nieznany typ pracownika, podaj ponownie [P- programista; K-Kierownik]: ");
-                try {
-                    returningCategory = Character.toLowerCase(scan.nextLine().charAt(0));
-                } catch (Exception e) {
-                    int i = 0;
-                    returningCategory = (char) i;
-                }
+                multiLogger.error("Nieznany typ pracownika, podaj ponownie [P- programista; K-Kierownik]: ");
+                multiLogger.error("Podaj ponownie: ");
+                category = scan.nextLine();
+                returningCategory = emptyStringHandler(category);
             }
         } while (!outOfLoop);
         return returningCategory;
     }
 
-
-
-
-    /*private String evaluateOfImportValue(String imp) {
+    private static char emptyStringHandler(String string) {
         Scanner scan = new Scanner(System.in);
-        String checkedValue = null;
         boolean swicher = false;
+        char returningCategory = ' ';
         do {
-            for (int i = 0; i <= imp.length(); i++) {
-                if (imp.charAt(i) <= 48 || 57 <= imp.charAt(i) || imp.charAt(i) != 46) {
-                    Employee.employeeMultiLogger.error("Panie podałeś wartość pensji zasadniczej: " + imp + ". Popraw");
-                    Employee.employeeMultiLogger.error("Podaj nową wartość (PAMIĘTAJ !! SEPARATOREM JEST \".\" !!):");
-                    imp = scan.nextLine();
-                    break;
-                } else {
-                    checkedValue = imp;
-                }
+            try {
+                returningCategory = Character.toLowerCase(string.charAt(0));
+                swicher = true;
+            } catch (Exception e) {
+                multiLogger.error("Nie może być pusta wartość!!!!");
+                multiLogger.error("Podaj ponownie nie pustą wartość:");
+                string = scan.nextLine();
             }
-        } while (checkedValue == null);
-        return checkedValue;
-    }*/
+        } while (!swicher);
+        return returningCategory;
+    }
+
 }
 
