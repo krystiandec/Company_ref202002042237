@@ -1,8 +1,17 @@
 package Company.Employee;
 
+import Company.Loggers.ConsoleLogger;
+import Company.Loggers.FileLogger;
+import Company.Loggers.MultiLogger;
+
+import java.io.Console;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Age {
+    private static MultiLogger multiLogger = new MultiLogger(new ConsoleLogger(), new FileLogger());
+    private static ConsoleLogger consoleLogger = new ConsoleLogger();
+
     private Scanner scan = new Scanner(System.in);
     private int age;
 
@@ -29,8 +38,8 @@ public class Age {
             if (ageConsoleLengthControl(ageConsole) && ageConsoleCharCheck(ageConsole)) {
                 doAgeConsoleHasCurrectFormat = true;
             } else {
-                System.out.println("Podano: \"" + ageConsole + "\"");
-                System.out.println("Podaj ponownie: ");
+                consoleLogger.info("Podano: \"" + ageConsole + "\"");
+                consoleLogger.info("Podaj ponownie: ");
                 ageConsole = scan.nextLine();
             }
         } while (!doAgeConsoleHasCurrectFormat);
@@ -41,9 +50,9 @@ public class Age {
         boolean outOfLoop = false;
 
         if (ageConsole.length() > 2) {
-            System.out.println("Podany ciag znakow jest za DLUGI.");
+            consoleLogger.info("Podany ciag znakow jest za DLUGI.");
         } else if (ageConsole.length() < 2) {
-            System.out.println("Podany ciag znakow jest za KROTKI.");
+            consoleLogger.info("Podany ciag znakow jest za KROTKI.");
         } else outOfLoop = true;
         return outOfLoop;
     }
@@ -88,12 +97,12 @@ public class Age {
     private boolean evaluationOfAgeConsoleRange(int ageConsoleVal) {
         boolean evaluationOfAgeConsoleVal = false;
         if (ageConsoleVal <= 15) {
-            System.out.println("Zatrudniasz małolata?");
-            System.out.println("Nie możesz zatrudnić małolata");
+            multiLogger.error("Zatrudniasz małolata?");
+            multiLogger.error("Nie możesz zatrudnić małolata");
             return evaluationOfAgeConsoleVal;
         } else if (ageConsoleVal > 65) {
-            System.out.println("Zatrudniasz emeryta?");
-            System.out.println("Nie możesz zatrudnić Emeryta");
+            multiLogger.error("Zatrudniasz emeryta?");
+            multiLogger.error("Nie możesz zatrudnić Emeryta");
 //            System.out.println("Na pewno dobry wiek został podany? [Y/N]"); // tutaj będę chciał ustawić
 //            możliwość zatrudnienia ale obsługę znaków Y i N muszę zrobić aby nic innego nie dało sie wybrać
             //więc póki co nie da się zatrudnić emeryta xD

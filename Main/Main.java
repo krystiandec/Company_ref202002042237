@@ -175,13 +175,13 @@ public class Main {
 
 /*to do list:
  *[DONE] 1. sortowanie
- * 2. wiek wyliczany z podanej daty
+ *[DONE] 2. wiek wyliczany z podanej daty
  *[DONE] 3. repozytorium - , DZIAŁA - problem był z wiekiem i jego przekazaniem do pliku. nie można było przekazaćze względu na java.until.Scanner. )
  *[DONE] 4. logi aby do pliku była zapisywana akcja i jej rezultat tylko a na konsoli aby się wyświetlało wszystko. - trzeba rozdzielać
  *[DONE] 5. Mapy - przeanalizowane - metoda getOrDefault działa nieźle.
  *[DONE] 6. Obsługa płci - wywala wyjątek przy wartości null - obsłużyć jakoś.
- * 7. Obsługa zakresu pensji zasadniczej. przy podaniu wartości innej niż w formacie 4521.02 wywala błąc - obsłużyć.
- * 8. Obsługa premii dla kierownika, ta sama sytuacja co dla pensji zasadniczej tutaj zacieśnić zakres do dodatnich int w zakresie 1-100.
+ *[DONE] 7. Obsługa zakresu pensji zasadniczej. przy podaniu wartości innej niż w formacie 4521.02 wywala błąc - obsłużyć.
+ *[DONE] 8. Obsługa premii dla kierownika, ta sama sytuacja co dla pensji zasadniczej tutaj zacieśnić zakres do dodatnich int w zakresie 1-100.
  *[DONE] 9. Poprawić obsługę pobierania nazwy pracownika, wyciągnąć na zewnątrz metodę sprawdzającą czy podany znak nie jest null. warunek w innej metodzie, w else i ponownym podaniu sprawdzić czy nie null przez wcześniejszą metodę.
  * */
 

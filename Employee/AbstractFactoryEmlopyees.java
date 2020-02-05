@@ -62,8 +62,8 @@ public abstract class AbstractFactoryEmlopyees extends Employee {
         switch (category) {
             case 'k': {
                 System.out.print("Jaka premia do wypłaty:");
-                BigDecimal premia = incorrectInputValueHandler(scan.nextLine());
-                return new Sepervisior(imie, nazwisko, sex, age, pensja, premia);
+                BigDecimal extra = extraRangeEvaluate(incorrectInputValueHandler(scan.nextLine()));
+                return new Sepervisior(imie, nazwisko, sex, age, pensja, extra);
             }
             default: {
                 System.out.print("Jaka technologia? :");
@@ -124,8 +124,23 @@ public abstract class AbstractFactoryEmlopyees extends Employee {
                 string = scan.nextLine();
             }
         } while (!swicher);
-
         return evaluateVal;
+    }
+
+    private static BigDecimal extraRangeEvaluate(BigDecimal extra){
+        Scanner scan = new Scanner(System.in);
+        String tempString;
+        boolean swicher = false;
+        do {
+            if (extra.doubleValue() > 1 || extra.doubleValue() < 0) {
+                multiLogger.error("Niedopuszczalny zakres premii. Podaj ponownie: ");
+                tempString = scan.nextLine();
+                extra = incorrectInputValueHandler(tempString);
+            }else {
+                swicher = true;
+            }
+        }while (!swicher);
+        return extra;
     }
 
 }
