@@ -175,7 +175,7 @@ public class Main {
 
 /*to do list:
  *[DONE] 1. sortowanie
- *[DONE] 2. wiek wyliczany z podanej daty
+ *[TO DO] ! 2. wiek wyliczany z podanej daty
  *[DONE] 3. repozytorium - , DZIAŁA - problem był z wiekiem i jego przekazaniem do pliku. nie można było przekazaćze względu na java.until.Scanner. )
  *[DONE] 4. logi aby do pliku była zapisywana akcja i jej rezultat tylko a na konsoli aby się wyświetlało wszystko. - trzeba rozdzielać
  *[DONE] 5. Mapy - przeanalizowane - metoda getOrDefault działa nieźle.
